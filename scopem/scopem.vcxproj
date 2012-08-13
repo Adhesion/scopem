@@ -37,10 +37,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\vstsdk2.4;..\..\vstsdk2.4\public.sdk\source\vst2.x;..\..\ndcvst;$(IncludePath)</IncludePath>
+    <IncludePath>../../ndcvst;../../vstsdk2.4;../../vstsdk2.4/public.sdk/source/vst2.x;../../vstsdk2.4/vstgui.sf/vstgui;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\vstsdk2.4;..\..\vstsdk2.4\public.sdk\source\vst2.x;..\..\ndcvst;$(IncludePath)</IncludePath>
+    <IncludePath>../../ndcvst;../../vstsdk2.4;../../vstsdk2.4/public.sdk/source/vst2.x;../../vstsdk2.4/vstgui.sf/vstgui;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,6 +82,10 @@
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\aeffeditor.h" />
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.h" />
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.h" />
+    <ClInclude Include="ControlGUI.h" />
+    <ClInclude Include="DrawTimer.h" />
+    <ClInclude Include="GLGUI.h" />
+    <ClInclude Include="WrapperGUI.h" />
     <ClInclude Include="scopem.h" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +95,10 @@
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.cpp" />
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.cpp" />
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\vstplugmain.cpp" />
+    <ClCompile Include="ControlGUI.cpp" />
+    <ClCompile Include="DrawTimer.cpp" />
+    <ClCompile Include="GLGUI.cpp" />
+    <ClCompile Include="WrapperGUI.cpp" />
     <ClCompile Include="scopem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

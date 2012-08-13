@@ -7,6 +7,7 @@
  */
 
 #include "scopem.h"
+#include "WrapperGUI.h"
 
 AudioEffect* createEffectInstance( audioMasterCallback master )
 {
@@ -23,7 +24,7 @@ scopem::scopem( audioMasterCallback master )
 
 	numChannels = 2;
 	setNumInputs( numChannels );
-	setNumInputs( numChannels );
+	setNumOutputs( numChannels );
 
 	canProcessReplacing( true );
 

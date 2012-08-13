@@ -60,6 +60,18 @@
     <ClInclude Include="..\..\ndcvst\MultiGUI\MultiGUIEditor.h">
       <Filter>ndc\MultiGUI</Filter>
     </ClInclude>
+    <ClInclude Include="WrapperGUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLGUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlGUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scopem.cpp">
@@ -82,6 +94,18 @@
     </ClCompile>
     <ClCompile Include="..\..\ndcvst\MultiGUI\MultiGUIEditor.cpp">
       <Filter>ndc\MultiGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WrapperGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawTimer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
