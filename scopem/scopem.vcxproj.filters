@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="VST interface">
+      <UniqueIdentifier>{461ab643-5607-443d-a1bf-a37360f8747b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="VST source">
+      <UniqueIdentifier>{232fcf57-1fd4-47f6-ae6a-2970ee088e22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ndc">
+      <UniqueIdentifier>{4555f759-4680-4eef-9895-cfce073cfa1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ndc\MultiGUI">
+      <UniqueIdentifier>{36075132-3d92-49b5-b44f-1c738c89f415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ndc\VSTGL">
+      <UniqueIdentifier>{2fe41059-c5fb-44df-9c4a-960de86f1387}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="scopem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\pluginterfaces\vst2.x\aeffect.h">
+      <Filter>VST interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\pluginterfaces\vst2.x\aeffectx.h">
+      <Filter>VST interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\pluginterfaces\vst2.x\vstfxstore.h">
+      <Filter>VST interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\aeffeditor.h">
+      <Filter>VST source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.h">
+      <Filter>VST source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.h">
+      <Filter>VST source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ndcvst\VSTGL\VSTGLTimer.h">
+      <Filter>ndc\VSTGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ndcvst\VSTGL\VSTGLEditor.h">
+      <Filter>ndc\VSTGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ndcvst\MultiGUI\MultiGUIEditor.h">
+      <Filter>ndc\MultiGUI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="scopem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.cpp">
+      <Filter>VST source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.cpp">
+      <Filter>VST source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\vstplugmain.cpp">
+      <Filter>VST source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ndcvst\VSTGL\VSTGLEditor.cpp">
+      <Filter>ndc\VSTGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ndcvst\VSTGL\VSTGLTimer.cpp">
+      <Filter>ndc\VSTGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ndcvst\MultiGUI\MultiGUIEditor.cpp">
+      <Filter>ndc\MultiGUI</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
