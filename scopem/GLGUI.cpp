@@ -16,10 +16,10 @@ GLGUI::GLGUI( AudioEffect* effect )
 	timer = new DrawTimer( 16, this );
 
 	// have to set size early, presumably for GL context init
-	setRect( 0, 0, 512, 384 );
+	setRect( 0, 0, 512, 512 );
 
 	bufferPos = 0;
-	bufferSize = 10000;
+	bufferSize = 1000;
 	buffer = new float[ bufferSize ];
 }
 
@@ -85,10 +85,19 @@ void GLGUI::draw()
 	// draw buffer
 	glColor4f( 0.2f, 0.3f, 0.9f, 0.95f );
 	glBegin( GL_LINE_STRIP );
+	// align with where the buffer was most recently written to so we don't
+	// draw any discontinuities
+	// bufferPos is newest data, so bufferPos+1 is oldest (draw old -> new)
+	int pos = bufferPos + 1;
 	for( int i = 0; i < bufferSize; i++ )
 	{
-		glVertex3f( xPos, buffer[ i ], 0.0f );
+		if ( pos == bufferSize )
+		{
+			pos = 0;
+		}
+		glVertex3f( xPos, buffer[ pos ], 0.0f );
 		xPos += inc;
+		pos++;
 	}
 	glEnd();
 }
