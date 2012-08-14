@@ -29,6 +29,9 @@ scopem::scopem( audioMasterCallback master )
 	canProcessReplacing( true );
 
 	setUniqueID( 'scpm' );
+
+	gui = new WrapperGUI( this );
+	setEditor( gui );
 }
 
 scopem::~scopem()
@@ -38,7 +41,10 @@ scopem::~scopem()
 
 void scopem::processReplacing( float** inputs, float** outputs, VstInt32 sampleFrames )
 {
-
+	for( int i = 0; i < sampleFrames; i++ )
+	{
+		gui->addToBuffer( ( inputs[0][i] + inputs[1][i] ) / 2.0f );
+	}
 }
 
 void scopem::setParameter( VstInt32 index, float value )

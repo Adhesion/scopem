@@ -53,6 +53,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>zlib.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../zlib-1.2.7;</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>vstplug.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,6 +71,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>zlib.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../zlib-1.2.7;</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>vstplug.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -82,6 +84,13 @@
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\aeffeditor.h" />
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.h" />
     <ClInclude Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\aeffguieditor.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cfileselector.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cscrollview.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\ctabview.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstcontrols.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstgui.h" />
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstkeycode.h" />
     <ClInclude Include="ControlGUI.h" />
     <ClInclude Include="DrawTimer.h" />
     <ClInclude Include="GLGUI.h" />
@@ -95,11 +104,20 @@
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffect.cpp" />
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\audioeffectx.cpp" />
     <ClCompile Include="..\..\vstsdk2.4\public.sdk\source\vst2.x\vstplugmain.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\aeffguieditor.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cfileselector.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cscrollview.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\ctabview.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstcontrols.cpp" />
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstgui.cpp" />
     <ClCompile Include="ControlGUI.cpp" />
     <ClCompile Include="DrawTimer.cpp" />
     <ClCompile Include="GLGUI.cpp" />
     <ClCompile Include="WrapperGUI.cpp" />
     <ClCompile Include="scopem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vstplug.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

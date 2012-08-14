@@ -28,6 +28,9 @@
     <Filter Include="ndc\VSTGL">
       <UniqueIdentifier>{2fe41059-c5fb-44df-9c4a-960de86f1387}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VST GUI">
+      <UniqueIdentifier>{cb216633-25f3-4f79-96b6-ccca2cf5aca4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scopem.h">
@@ -72,6 +75,27 @@
     <ClInclude Include="DrawTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\aeffguieditor.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cfileselector.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cscrollview.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\ctabview.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstcontrols.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstgui.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstkeycode.h">
+      <Filter>VST GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scopem.cpp">
@@ -107,5 +131,28 @@
     <ClCompile Include="DrawTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\aeffguieditor.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cfileselector.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\cscrollview.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\ctabview.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstcontrols.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstgui.cpp">
+      <Filter>VST GUI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vstplug.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -11,6 +11,8 @@
 
 #include "audioeffectx.h"
 
+class WrapperGUI;
+
 enum
 {
 	mode = 0,
@@ -44,6 +46,8 @@ private:
 	float parameters[ numSParams ];
 
 	int numChannels;
+
+	WrapperGUI* gui;
 };
 
 #endif

@@ -11,12 +11,20 @@
 
 #include "aeffguieditor.h"
 
-class ControlGUI : public AEffGUIEditor
+class ControlGUI : public AEffGUIEditor, public CControlListener
 {
 public:
+	ControlGUI( AudioEffect* effect );
+	~ControlGUI();
+
+	bool open( void* ptr );
+	void close();
+
+	void setParameter( VstInt32 index, float value );
+	void valueChanged( CDrawContext* context, CControl* control );
 
 private:
-
+	CFrame* frame;
 };
 
 #endif

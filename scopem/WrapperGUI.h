@@ -19,7 +19,9 @@ public:
 	WrapperGUI( AudioEffect* effect );
 	~WrapperGUI();
 
-	void setParameter( VstInt32 index, float value );
+	void setParameter( long index, float value );
+
+	void addToBuffer( float in );
 
 private:
 	GLGUI* gl;
