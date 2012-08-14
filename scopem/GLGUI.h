@@ -26,10 +26,13 @@ public:
 
 	void addToBuffer( float in );
 
+	void updateRisePoint();
+
 private:
 	float* buffer;
 	int bufferPos;
 	int bufferSize;
+	int risePoint;
 	DrawTimer* timer;
 };
 

@@ -19,6 +19,7 @@ GLGUI::GLGUI( AudioEffect* effect )
 	setRect( 0, 0, 512, 512 );
 
 	bufferPos = 0;
+	risePoint = 0;
 	bufferSize = 1000;
 	buffer = new float[ bufferSize ];
 }
@@ -52,7 +53,7 @@ void GLGUI::guiOpen()
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 	glEnable( GL_LINE_SMOOTH );
-	glLineWidth( 2.0f );
+	glLineWidth( 1.5f );
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
 
 	// start timer so we start drawing
@@ -74,7 +75,7 @@ void GLGUI::draw()
 	float inc = 2.0f / (float)bufferSize;
 
 	// draw axes
-	glColor4f( 0.5f, 0.5f, 0.5f, 0.5f );
+	glColor4f( 0.7f, 0.7f, 0.7f, 0.25f );
 	glBegin( GL_LINES );
 	glVertex3f( -1.0f, 0.0f, 0.0f );
 	glVertex3f( 1.0f, 0.0f, 0.0f );
@@ -89,6 +90,7 @@ void GLGUI::draw()
 	// draw any discontinuities
 	// bufferPos is newest data, so bufferPos+1 is oldest (draw old -> new)
 	int pos = bufferPos + 1;
+	//int pos = risePoint;
 	for( int i = 0; i < bufferSize; i++ )
 	{
 		if ( pos == bufferSize )
@@ -110,4 +112,15 @@ void GLGUI::addToBuffer( float in )
 		bufferPos = 0;
 	}
 	buffer[ bufferPos ] = in;
+}
+
+void GLGUI::updateRisePoint()
+{
+	// find point where waveform "starts" (was 0, now rising)
+	int lastPos = bufferPos == 0 ? bufferSize - 1 : bufferPos - 1;
+	if ( abs( buffer[ lastPos ] ) < 0.001f &&
+		buffer[ bufferPos ] > buffer[ lastPos ] )
+	{
+		risePoint = lastPos;
+	}
 }
