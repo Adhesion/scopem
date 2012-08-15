@@ -96,6 +96,9 @@
     <ClInclude Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstkeycode.h">
       <Filter>VST GUI</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scopem.cpp">
@@ -154,5 +157,19 @@
     <None Include="vstplug.def">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="resources\background.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\sliderBackground.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\sliderHandle.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="scopem.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -11,6 +11,14 @@
 
 #include "aeffguieditor.h"
 
+// resource bitmap ids
+enum
+{
+	backgroundID = 103,
+	sliderBackgroundID,
+	sliderHandleID
+};
+
 class ControlGUI : public AEffGUIEditor, public CControlListener
 {
 public:
@@ -24,7 +32,12 @@ public:
 	void valueChanged( CDrawContext* context, CControl* control );
 
 private:
-	CFrame* frame;
+	CBitmap* background;
+	CBitmap* sliderBackground;
+	CBitmap* sliderHandle;
+
+	CVerticalSlider* amplitudeControl;
+	CVerticalSlider* frequencyControl;
 };
 
 #endif

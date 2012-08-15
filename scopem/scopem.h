@@ -12,10 +12,13 @@
 #include "audioeffectx.h"
 
 class WrapperGUI;
+class ControlGUI;
 
 enum
 {
 	mode = 0,
+	amplitude,
+	frequency,
 	numSParams
 };
 

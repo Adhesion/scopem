@@ -94,6 +94,7 @@
     <ClInclude Include="ControlGUI.h" />
     <ClInclude Include="DrawTimer.h" />
     <ClInclude Include="GLGUI.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="WrapperGUI.h" />
     <ClInclude Include="scopem.h" />
   </ItemGroup>
@@ -117,7 +118,13 @@
     <ClCompile Include="scopem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\background.bmp" />
+    <None Include="resources\sliderBackground.bmp" />
+    <None Include="resources\sliderHandle.bmp" />
     <None Include="vstplug.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="scopem.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

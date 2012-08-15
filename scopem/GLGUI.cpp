@@ -13,15 +13,18 @@ GLGUI::GLGUI( AudioEffect* effect )
 	: VSTGLEditor( effect, Antialias4x )
 {
 	// 16ms interval ~= 60fps
-	timer = new DrawTimer( 16, this );
+	timer = new DrawTimer( 100, this );
 
 	// have to set size early, presumably for GL context init
-	setRect( 0, 0, 512, 512 );
+	setRect( 0, 0, 512, 384 );
 
 	bufferPos = 0;
 	risePoint = 0;
-	bufferSize = 1000;
+	bufferSize = 10000;
 	buffer = new float[ bufferSize ];
+
+	ampScale = 1.0f;
+	window = 700;
 }
 
 GLGUI::~GLGUI()
@@ -46,7 +49,7 @@ void GLGUI::guiOpen()
     glMatrixMode( GL_MODELVIEW );
 	glLoadIdentity();
 	// note - args are camera, lookat, up
-	gluLookAt( 0.0f, 0.0f, 0.5f,
+	gluLookAt( 0.0f, 0.0f, 0.75f,
 				0.0f, 0.0f, -1.0f,
 				0.0f, 1.0f, 0.0f );
 
@@ -83,6 +86,15 @@ void GLGUI::draw()
 	glVertex3f( 0.0f, 1.0f, 0.0f );
 	glEnd();
 
+	// draw full scale (amplitude) boundary
+	glColor4f( 0.5f, 0.5f, 0.5f, 0.15f );
+	glBegin( GL_LINES );
+	glVertex3f( -1.0f, ampScale, 0.0f );
+	glVertex3f( 1.0f, ampScale, 0.0f );
+	glVertex3f( -1.0f, ampScale * -1.0f, 0.0f );
+	glVertex3f( 1.0f, ampScale * -1.0f, 0.0f );
+	glEnd();
+
 	// draw buffer
 	glColor4f( 0.2f, 0.3f, 0.9f, 0.95f );
 	glBegin( GL_LINE_STRIP );
@@ -97,7 +109,7 @@ void GLGUI::draw()
 		{
 			pos = 0;
 		}
-		glVertex3f( xPos, buffer[ pos ], 0.0f );
+		glVertex3f( xPos, buffer[ pos ] * ampScale, 0.0f );
 		xPos += inc;
 		pos++;
 	}
@@ -112,6 +124,16 @@ void GLGUI::addToBuffer( float in )
 		bufferPos = 0;
 	}
 	buffer[ bufferPos ] = in;
+}
+
+void GLGUI::setAmpScale( float a )
+{
+	ampScale = a;
+}
+
+void GLGUI::setWindow( int w )
+{
+	window = w;
 }
 
 void GLGUI::updateRisePoint()

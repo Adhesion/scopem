@@ -8,6 +8,7 @@
 
 #include "scopem.h"
 #include "WrapperGUI.h"
+#include "ControlGUI.h"
 
 AudioEffect* createEffectInstance( audioMasterCallback master )
 {
@@ -21,6 +22,11 @@ scopem::scopem( audioMasterCallback master )
 	strcpy( vendor, "Adhesion" );
 
 	version = 100;
+
+	for( int i = 0; i < numSParams; i++ )
+	{
+		parameters[ i ] = 0.0f;
+	}
 
 	numChannels = 2;
 	setNumInputs( numChannels );
@@ -43,13 +49,18 @@ void scopem::processReplacing( float** inputs, float** outputs, VstInt32 sampleF
 {
 	for( int i = 0; i < sampleFrames; i++ )
 	{
-		gui->addToBuffer( ( inputs[0][i] + inputs[1][i] ) / 2.0f );
+		//gui->addToBuffer( ( inputs[0][i] + inputs[1][i] ) / 2.0f );
 	}
 }
 
 void scopem::setParameter( VstInt32 index, float value )
 {
 	parameters[ index ] = value;
+
+	if ( editor )
+	{
+		//( ( MultiGUIEditor* )editor )->setParameter( index, value );
+	}
 }
 
 float scopem::getParameter( VstInt32 index )
@@ -59,17 +70,30 @@ float scopem::getParameter( VstInt32 index )
 
 void scopem::getParameterLabel( VstInt32 index, char* text )
 {
-
+	strcpy( text, " " );
 }
 
 void scopem::getParameterDisplay( VstInt32 index, char* text )
 {
-
+	float2string( parameters[ index ], text, kVstMaxParamStrLen );
 }
 
 void scopem::getParameterName( VstInt32 index, char* text )
 {
-
+	switch( index )
+	{
+	mode:
+		strcpy( text, "Mode" );
+		break;
+	amplitude:
+		strcpy( text, "Amplitude" );
+		break;
+	frequency:
+		strcpy( text, "Frequency" );
+		break;
+	default:
+		strcpy( text, "" );
+	}
 }
 
 bool scopem::getEffectName( char* eName )

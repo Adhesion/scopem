@@ -26,6 +26,9 @@ public:
 
 	void addToBuffer( float in );
 
+	void setAmpScale( float a );
+	void setWindow( int w );
+
 	void updateRisePoint();
 
 private:
@@ -33,6 +36,12 @@ private:
 	int bufferPos;
 	int bufferSize;
 	int risePoint;
+
+	// amplitude scale for the scope
+	float ampScale;
+	// how many samples to display in the scope
+	int window;
+
 	DrawTimer* timer;
 };
 
