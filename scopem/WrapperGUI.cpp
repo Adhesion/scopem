@@ -7,6 +7,7 @@
  */
 
 #include "WrapperGUI.h"
+#include "scopem.h"
 
 WrapperGUI::WrapperGUI( AudioEffect* effect )
 	: MultiGUIEditor( effect )
@@ -39,7 +40,9 @@ WrapperGUI::~WrapperGUI()
 
 void WrapperGUI::setParameter( long index, float value )
 {
-	gl->setParameter( index, value );
+	// gl gui needs to know scaled values, gui controls in control need 0-1
+	gl->setParameter( index,
+		( ( scopem* )effect )->scaleParameter( index, value ) );
 	control->setParameter( index, value );
 }
 

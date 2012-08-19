@@ -82,20 +82,21 @@ void ControlGUI::close()
 
 void ControlGUI::setParameter( VstInt32 index, float value )
 {
+	// TODO fix this, make into loop (check tags)
+	// vector of controls? or map?
 	if ( index == amplitude )
 	{
 		printf( "set parameter amplitude to %f\n", value );
 		amplitudeControl->setValue( effect->getParameter( index ) );
 	}
+	else if ( index == frequency )
+	{
+		frequencyControl->setValue( effect->getParameter( index ) );
+	}
 }
 
 void ControlGUI::valueChanged( CDrawContext* context, CControl* control )
 {
-	// TODO figure out parameter # from control
-	// map of params to controls?
-	if ( control == amplitudeControl )
-	{
-		printf( "value change amplitude to %f\n", control->getValue() );
-		effect->setParameterAutomated( amplitude, control->getValue() );
-	}
+	printf( "value change amplitude to %f\n", control->getValue() );
+	effect->setParameterAutomated( control->getTag(), control->getValue() );
 }

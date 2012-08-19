@@ -8,12 +8,13 @@
 
 #include "GLGUI.h"
 #include "DrawTimer.h"
+#include "scopem.h"
 
 GLGUI::GLGUI( AudioEffect* effect )
 	: VSTGLEditor( effect, Antialias4x )
 {
 	// 16ms interval ~= 60fps
-	timer = new DrawTimer( 100, this );
+	timer = new DrawTimer( 16, this );
 
 	// have to set size early, presumably for GL context init
 	setRect( 0, 0, 512, 384 );
@@ -36,8 +37,8 @@ void GLGUI::guiOpen()
 {
 	glViewport( 0, 0, getWidth(), getHeight() );
 
-    // use frustum projection
-    glMatrixMode( GL_PROJECTION );
+	// use frustum projection
+	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
 
 	// depth 0.1 - 20 for now
@@ -46,7 +47,7 @@ void GLGUI::guiOpen()
 	glFrustum( -width, width, -height, height, 0.5, 1.5 );
 
 	// default camera position
-    glMatrixMode( GL_MODELVIEW );
+	glMatrixMode( GL_MODELVIEW );
 	glLoadIdentity();
 	// note - args are camera, lookat, up
 	gluLookAt( 0.0f, 0.0f, 0.75f,
@@ -72,10 +73,11 @@ void GLGUI::draw()
 {
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	// draw from -1.0f - 1.0f - total length 2.0f so x increment for each val
+	// draw from 1.0f - -1.0f - total length 2.0f so x increment for each val
 	// is 2/buffersize
-	float xPos = -1.0f;
-	float inc = 2.0f / (float)bufferSize;
+	// drawing right to left from newest data for (window) samples
+	float xPos = 1.0f;
+	float inc = 2.0f / (float)window;
 
 	// draw axes
 	glColor4f( 0.7f, 0.7f, 0.7f, 0.25f );
@@ -95,23 +97,21 @@ void GLGUI::draw()
 	glVertex3f( 1.0f, ampScale * -1.0f, 0.0f );
 	glEnd();
 
-	// draw buffer
+	// draw buffer (waveform)
 	glColor4f( 0.2f, 0.3f, 0.9f, 0.95f );
 	glBegin( GL_LINE_STRIP );
 	// align with where the buffer was most recently written to so we don't
 	// draw any discontinuities
-	// bufferPos is newest data, so bufferPos+1 is oldest (draw old -> new)
-	int pos = bufferPos + 1;
-	//int pos = risePoint;
-	for( int i = 0; i < bufferSize; i++ )
+	int pos = bufferPos;
+	for( int i = 0; i < window; i++ )
 	{
-		if ( pos == bufferSize )
+		if ( pos < 0 )
 		{
-			pos = 0;
+			pos = bufferSize - 1;
 		}
 		glVertex3f( xPos, buffer[ pos ] * ampScale, 0.0f );
-		xPos += inc;
-		pos++;
+		xPos -= inc;
+		pos--;
 	}
 	glEnd();
 }
@@ -126,14 +126,21 @@ void GLGUI::addToBuffer( float in )
 	buffer[ bufferPos ] = in;
 }
 
-void GLGUI::setAmpScale( float a )
+void GLGUI::setParameter( VstInt32 index, float value )
 {
-	ampScale = a;
-}
-
-void GLGUI::setWindow( int w )
-{
-	window = w;
+	switch( index )
+	{
+	case amplitude:
+		ampScale = value;
+		printf( "GL setparam, ampscale now %f\n", ampScale );
+		break;
+	case frequency:
+		// since we get the frequency & we want the period, flip it
+		// (accounting for samplerate)
+		window = (int)ceil( effect->getSampleRate() / value );
+		printf( "GL setparam, window now %i (sr %f)\n", window, effect->getSampleRate() );
+		break;
+	}
 }
 
 void GLGUI::updateRisePoint()

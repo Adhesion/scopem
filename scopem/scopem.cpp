@@ -49,7 +49,7 @@ void scopem::processReplacing( float** inputs, float** outputs, VstInt32 sampleF
 {
 	for( int i = 0; i < sampleFrames; i++ )
 	{
-		//gui->addToBuffer( ( inputs[0][i] + inputs[1][i] ) / 2.0f );
+		gui->addToBuffer( ( inputs[0][i] + inputs[1][i] ) / 2.0f );
 	}
 }
 
@@ -59,7 +59,7 @@ void scopem::setParameter( VstInt32 index, float value )
 
 	if ( editor )
 	{
-		//( ( MultiGUIEditor* )editor )->setParameter( index, value );
+		( ( MultiGUIEditor* )editor )->setParameter( index, value );
 	}
 }
 
@@ -117,4 +117,55 @@ bool scopem::getVendorString( char* vString )
 VstInt32 scopem::getVendorVersion()
 {
 	return version;
+}
+
+float scopem::scaleParameter( int param, float value )
+{
+	float out = value;
+	switch( param )
+	{
+	case amplitude:
+		out = linearScale( out, 0.5f, 2.0f );
+		break;
+	case frequency:
+		out = linearScale( out, 20.0f, 5000.0f );
+		break;
+	}
+	return out;
+}
+
+float scopem::linearScale( float in, float min, float max )
+{
+	float ret;
+	if ( min == 0.0f && max == 0.0f )
+	{
+		ret = 0.0f;
+	}
+	else if ( min > max )
+	{
+		ret = min - ( in * ( min - max ) );
+	}
+	else
+	{
+		ret = min + ( in * ( max - min ) );
+	}
+	return ret;
+}
+
+float scopem::linearDescale( float in, float min, float max )
+{
+	float ret;
+	if ( min == 0.0f && max == 0.0f )
+	{
+		ret = 0.0f;
+	}
+	else if ( min > max )
+	{
+		ret = ( min - in ) / ( min - max );
+	}
+	else
+	{
+		ret = ( in - min ) / ( max - min );
+	}
+	return ret;
 }

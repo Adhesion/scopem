@@ -26,8 +26,7 @@ public:
 
 	void addToBuffer( float in );
 
-	void setAmpScale( float a );
-	void setWindow( int w );
+	void setParameter( VstInt32 index, float value );
 
 	void updateRisePoint();
 
