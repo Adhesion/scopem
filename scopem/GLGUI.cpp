@@ -41,7 +41,7 @@ void GLGUI::guiOpen()
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
 
-	// depth 0.1 - 20 for now
+	// depth 0.5 - 1.5 for now
 	float width = (float)getWidth() / (float)getHeight();
 	float height = 1.0f;
 	glFrustum( -width, width, -height, height, 0.5, 1.5 );
@@ -73,28 +73,28 @@ void GLGUI::draw()
 {
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	// draw from 1.0f - -1.0f - total length 2.0f so x increment for each val
+	// draw from 2.0f - -2.0f - total length 4.0f so x increment for each val
 	// is 2/buffersize
 	// drawing right to left from newest data for (window) samples
-	float xPos = 1.0f;
-	float inc = 2.0f / (float)window;
+	float xPos = 2.0f;
+	float inc = 4.0f / (float)window;
 
 	// draw axes
 	glColor4f( 0.7f, 0.7f, 0.7f, 0.25f );
 	glBegin( GL_LINES );
-	glVertex3f( -1.0f, 0.0f, 0.0f );
-	glVertex3f( 1.0f, 0.0f, 0.0f );
-	glVertex3f( 0.0f, -1.0f, 0.0f );
-	glVertex3f( 0.0f, 1.0f, 0.0f );
+	glVertex3f( -2.0f, 0.0f, 0.0f );
+	glVertex3f( 2.0f, 0.0f, 0.0f );
+	glVertex3f( 0.0f, -1.5f, 0.0f );
+	glVertex3f( 0.0f, 1.5f, 0.0f );
 	glEnd();
 
 	// draw full scale (amplitude) boundary
 	glColor4f( 0.5f, 0.5f, 0.5f, 0.15f );
 	glBegin( GL_LINES );
-	glVertex3f( -1.0f, ampScale, 0.0f );
-	glVertex3f( 1.0f, ampScale, 0.0f );
-	glVertex3f( -1.0f, ampScale * -1.0f, 0.0f );
-	glVertex3f( 1.0f, ampScale * -1.0f, 0.0f );
+	glVertex3f( -2.0f, ampScale, 0.0f );
+	glVertex3f( 2.0f, ampScale, 0.0f );
+	glVertex3f( -2.0f, ampScale * -1.0f, 0.0f );
+	glVertex3f( 2.0f, ampScale * -1.0f, 0.0f );
 	glEnd();
 
 	// draw buffer (waveform)
