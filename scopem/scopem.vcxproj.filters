@@ -99,6 +99,9 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="scale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scopem.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="..\..\vstsdk2.4\vstgui.sf\vstgui\vstgui.cpp">
       <Filter>VST GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="scale.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

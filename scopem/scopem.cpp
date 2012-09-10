@@ -9,6 +9,7 @@
 #include "scopem.h"
 #include "WrapperGUI.h"
 #include "ControlGUI.h"
+#include "scale.h"
 
 AudioEffect* createEffectInstance( audioMasterCallback master )
 {
@@ -128,44 +129,8 @@ float scopem::scaleParameter( int param, float value )
 		out = linearScale( out, 0.5f, 2.0f );
 		break;
 	case frequency:
-		out = linearScale( out, 20.0f, 5000.0f );
+		out = expoScale( out, 20.0f, 5000.0f );
 		break;
 	}
 	return out;
-}
-
-float scopem::linearScale( float in, float min, float max )
-{
-	float ret;
-	if ( min == 0.0f && max == 0.0f )
-	{
-		ret = 0.0f;
-	}
-	else if ( min > max )
-	{
-		ret = min - ( in * ( min - max ) );
-	}
-	else
-	{
-		ret = min + ( in * ( max - min ) );
-	}
-	return ret;
-}
-
-float scopem::linearDescale( float in, float min, float max )
-{
-	float ret;
-	if ( min == 0.0f && max == 0.0f )
-	{
-		ret = 0.0f;
-	}
-	else if ( min > max )
-	{
-		ret = ( min - in ) / ( min - max );
-	}
-	else
-	{
-		ret = ( in - min ) / ( max - min );
-	}
-	return ret;
 }

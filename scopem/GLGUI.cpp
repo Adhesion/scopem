@@ -74,10 +74,11 @@ void GLGUI::draw()
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	// draw from 2.0f - -2.0f - total length 4.0f so x increment for each val
-	// is 2/buffersize
+	// is 4/(windowsize-1)
+	// (-1 because for 10 points, there are 9 gaps)
 	// drawing right to left from newest data for (window) samples
 	float xPos = 2.0f;
-	float inc = 4.0f / (float)window;
+	float inc = 4.0f / (float)( window - 1 );
 
 	// draw axes
 	glColor4f( 0.7f, 0.7f, 0.7f, 0.25f );
@@ -96,7 +97,7 @@ void GLGUI::draw()
 	glVertex3f( -2.0f, ampScale * -1.0f, 0.0f );
 	glVertex3f( 2.0f, ampScale * -1.0f, 0.0f );
 	glEnd();
-
+	
 	// draw buffer (waveform)
 	glColor4f( 0.2f, 0.3f, 0.9f, 0.95f );
 	glBegin( GL_LINE_STRIP );

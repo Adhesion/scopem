@@ -43,8 +43,7 @@ public:
 
 	float scaleParameter( int param, float value );
 
-	float linearScale( float in, float min, float max );
-	float linearDescale( float in, float min, float max );
+	
 
 private:
 	char name[ kVstMaxEffectNameLen ];

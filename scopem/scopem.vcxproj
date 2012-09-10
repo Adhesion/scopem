@@ -95,6 +95,7 @@
     <ClInclude Include="DrawTimer.h" />
     <ClInclude Include="GLGUI.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="scale.h" />
     <ClInclude Include="WrapperGUI.h" />
     <ClInclude Include="scopem.h" />
   </ItemGroup>
@@ -114,6 +115,7 @@
     <ClCompile Include="ControlGUI.cpp" />
     <ClCompile Include="DrawTimer.cpp" />
     <ClCompile Include="GLGUI.cpp" />
+    <ClCompile Include="scale.cpp" />
     <ClCompile Include="WrapperGUI.cpp" />
     <ClCompile Include="scopem.cpp" />
   </ItemGroup>
