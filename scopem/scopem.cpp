@@ -24,10 +24,14 @@ scopem::scopem( audioMasterCallback master )
 
 	version = 100;
 
-	for( int i = 0; i < numSParams; i++ )
-	{
-		parameters[ i ] = 0.0f;
-	}
+	ampMin = 0.5f;
+	ampMax = 2.0f;
+	freqMin = 20.0f;
+	freqMax = 5000.0f;
+
+	parameters[ mode ] = 0.0f;
+	parameters[ amplitude ] = linearDescale( 1.0f, ampMin, ampMax );
+	parameters[ frequency ] = expoDescale( 440.0f, freqMin, freqMax );
 
 	numChannels = 2;
 	setNumInputs( numChannels );
@@ -58,6 +62,7 @@ void scopem::setParameter( VstInt32 index, float value )
 {
 	parameters[ index ] = value;
 
+	// note this cannot be called before the guis have open()ed
 	if ( editor )
 	{
 		( ( MultiGUIEditor* )editor )->setParameter( index, value );
@@ -126,10 +131,10 @@ float scopem::scaleParameter( int param, float value )
 	switch( param )
 	{
 	case amplitude:
-		out = linearScale( out, 0.5f, 2.0f );
+		out = linearScale( out, ampMin, ampMax );
 		break;
 	case frequency:
-		out = expoScale( out, 20.0f, 5000.0f );
+		out = expoScale( out, freqMin, freqMax );
 		break;
 	}
 	return out;

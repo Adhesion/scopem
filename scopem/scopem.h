@@ -43,14 +43,17 @@ public:
 
 	float scaleParameter( int param, float value );
 
-	
-
 private:
 	char name[ kVstMaxEffectNameLen ];
 	char vendor[ kVstMaxVendorStrLen ];
 	VstInt32 version;
 
 	float parameters[ numSParams ];
+
+	float ampMin;
+	float ampMax;
+	float freqMin;
+	float freqMax;
 
 	int numChannels;
 
